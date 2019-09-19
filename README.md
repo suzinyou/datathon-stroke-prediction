@@ -19,7 +19,8 @@ Objective
 ---------
 The purpose of this study is to develop the real-time prediction model for
 perioperative stroke.
- 
+
+
 Methods
 ---------
 Each patient in the Vital DB will be classified according to whether or not the subject
@@ -29,12 +30,14 @@ as anesthetic and monitoring techniques, pharmacologic strategies, and physiolog
 strategies will be used for the deep learning model. We will measure the accuracy
 and timeliness of the deep learning model’s forecasts. Univariate and multivariate
 analysis will be used to calculate the impact of each variable to perioperative stroke.
- 
+
+
 Expected result
 ---------
 The observed improvements in prediction for perioperative stroke are noteworthy in
 that these variables routinely collected during operation without the need for any
 additional effort.
+
 
 Project Organization
 ------------
