@@ -1,11 +1,12 @@
-datathon-stroke-prediction
-==============================
+# datathon-stroke-prediction
 
-Korea Clinical Datathon 2019 Team 3: Development of real-time prediction model for perioperative stroke
+Korea Clinical Datathon 2019
+Team 3's repository
+
+## Development of real-time prediction model for perioperative stroke
 (subject to change)
 
-Background
----------
+### Background
 Perioperative stroke is associated with significant morbidity and mortality. Despite
 advances in surgical techniques and improvements in perioperative care, the
 incidence of perioperative strokes has not decreased. In addition to the potentially
@@ -15,14 +16,11 @@ with an approximate incidence ranging from 20-60% depending on the stroke,
 operation, and patient. As such, interest has grown in the identification of those at
 risk for perioperative stoke.
 
-Objective
----------
+### Objective
 The purpose of this study is to develop the real-time prediction model for
 perioperative stroke.
 
-
-Methods
----------
+### Methods
 Each patient in the Vital DB will be classified according to whether or not the subject
 has a perioperative stroke. Age, gender, BMI, and other risk factors will be
 investigated to create a model for predicting perioperative stroke. Risk factors such
@@ -31,16 +29,13 @@ strategies will be used for the deep learning model. We will measure the accurac
 and timeliness of the deep learning model’s forecasts. Univariate and multivariate
 analysis will be used to calculate the impact of each variable to perioperative stroke.
 
-
-Expected result
----------
+### Expected result
 The observed improvements in prediction for perioperative stroke are noteworthy in
 that these variables routinely collected during operation without the need for any
 additional effort.
 
 
-Project Organization
-------------
+## Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
