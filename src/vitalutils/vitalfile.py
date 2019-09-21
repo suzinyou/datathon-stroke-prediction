@@ -2,6 +2,7 @@ import gzip
 import numpy as np
 from struct import pack, unpack_from, Struct
 from binascii import hexlify as hex
+import warnings
 
 unpack_b = Struct('<b').unpack_from
 unpack_w = Struct('<H').unpack_from
@@ -57,6 +58,52 @@ class VitalFile:
 
     def crop(self, ):
         pass
+
+    # updated version by jungkap
+    def get_samples2(self, tname, dname=None, dtstart=None, dtend=None):
+        trk = self.find_track(tname, dname)
+        if not trk:
+            return None
+        srate = trk['srate']
+        if srate == 0:
+            srate = 500
+
+        recs = trk['recs']
+        is_array_val = not np.isscalar(recs[-1]['val'])
+
+        if dtstart is None:
+            dtstart = recs[0]['dt']
+        if dtend is None:
+            if is_array_val:
+                dtend = recs[-1]['dt'] + len(recs[-1]['val']) / srate
+            else:
+                dtend = recs[-1]['dt']
+        
+        nsamp = int(np.ceil((dtend - dtstart) * srate))
+        ret = np.empty((nsamp, ), np.float32)
+        ret.fill(np.nan)
+
+        # 실제 샘플을 가져와 채움
+        for rec in recs:
+            sidx = int(np.ceil((rec['dt'] - dtstart) * srate))
+            n = len(rec['val']) if is_array_val else 1
+            eidx = sidx + n
+            srecidx = 0
+            erecidx = n
+            if sidx < 0:  # dtstart 이전이면
+                srecidx -= sidx
+                sidx = 0
+            if eidx > nsamp:  # dtend 이후이면
+                erecidx -= (eidx - nsamp)
+                eidx = nsamp
+
+            ret[sidx:eidx] = rec['val'][srecidx:erecidx] if is_array_val else rec['val']
+
+        # gain offset 변환
+        ret *= trk['gain']
+        ret += trk['offset']
+
+        return ret
 
     def get_samples(self, tname, dname=None, dtstart=None, dtend=None):
         trk = self.find_track(tname, dname)
