@@ -12,3 +12,6 @@ biosppy==0.6.1
 pandas==0.25.1
 numpy==1.17.0
 matplotlib==3.1.1
+scikit-learn
+keras
+tensorflow
