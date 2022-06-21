@@ -10,7 +10,7 @@ click
 # python-dotenv>=0.5.1
 biosppy==0.6.1
 pandas==0.25.1
-numpy==1.17.0
+numpy==1.22.0
 matplotlib==3.1.1
 scikit-learn==0.21.3
 Keras==2.3.0
